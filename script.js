@@ -334,8 +334,42 @@
     });
   }
 
+  /* ---------- Private sheet links (hidden behind the © in the footer) ---------- */
+  var SHEETS = [
+    { label: "Sheet 1", url: "https://docs.google.com/spreadsheets/d/1DRRd6kRznlstZfs09YSZWHtqfTZDu6XS5W4-DkK1uck/edit?pli=1&gid=0#gid=0" },
+    { label: "Sheet 2", url: "https://docs.google.com/spreadsheets/d/16wOxXMd3rTrOaagPb6Nz2m7OcMSrbIMwG13vdoMv6EE/edit?gid=0#gid=0" }
+  ];
+  function initSheetLinks() {
+    var cp = $(".copyright");
+    if (!cp) return;
+    var node = Array.prototype.filter.call(cp.childNodes, function (n) { return n.nodeType === 3 && n.nodeValue.indexOf("©") !== -1; })[0];
+    if (!node) return;
+    var i = node.nodeValue.indexOf("©");
+    var after = node.splitText(i);
+    after.nodeValue = after.nodeValue.slice(1);
+    var trig = document.createElement("span");
+    trig.textContent = "©";
+    trig.style.cssText = "position:relative;cursor:text;";
+    cp.insertBefore(trig, after);
+
+    var box = document.createElement("span");
+    box.style.cssText = "display:none;position:absolute;bottom:130%;left:50%;transform:translateX(-50%);background:#fff;border:1px solid #ddd;border-radius:4px;box-shadow:0 4px 12px rgba(0,0,0,.12);padding:4px 0;white-space:nowrap;z-index:50;font-weight:400;font-size:13px;text-align:left;";
+    box.innerHTML = SHEETS.map(function (s) {
+      return '<a href="' + s.url + '" target="_blank" rel="noopener noreferrer" style="display:block;padding:4px 14px;color:#333;">' + s.label + "</a>";
+    }).join("");
+    trig.appendChild(box);
+
+    trig.addEventListener("click", function (e) {
+      if (e.target.tagName === "A") return;
+      e.stopPropagation();
+      box.style.display = box.style.display === "block" ? "none" : "block";
+    });
+    document.addEventListener("click", function () { box.style.display = "none"; });
+  }
+
   document.addEventListener("DOMContentLoaded", function () {
     initHeader();
+    initSheetLinks();
     initForms();
     if (typeof PROPERTIES !== "undefined") { initHome(); initListing(); initCarousels(); }
   });
