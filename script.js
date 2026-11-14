@@ -106,9 +106,12 @@
 
   /* ---------- Contact form ----------
      Saves each enquiry to your Google Sheets (silently) and shows a thank-you message.
-     Paste your Google Apps Script web app URL (ends in /exec) between the quotes below.
-     Setup steps: google-apps-script.txt                                                  */
-  var SHEETS_ENDPOINT = "PASTE_YOUR_WEB_APP_URL_HERE";
+     Paste each sheet's Google Apps Script web app URL (ends in /exec) between its quotes.
+     Setup steps: sheet1-apps-script.txt and sheet2-apps-script.txt                       */
+  var SHEETS_ENDPOINTS = [
+    "https://script.google.com/macros/s/AKfycbyTzTBps491o__BSuLlpxA-MlL3hGL88ABGbhNh6-HTnPJIg_1ZWzrGKK0Ljazyy5xv/exec",
+    "https://script.google.com/macros/s/AKfycbyTzTBps491o__BSuLlpxA-MlL3hGL88ABGbhNh6-HTnPJIg_1ZWzrGKK0Ljazyy5xv/exec"
+  ];
 
   function initForms() {
     $$(".enquiry-form").forEach(function (f) {
@@ -122,12 +125,13 @@
         data.append("email", d.get("email") || "");
         data.append("message", d.get("message") || "");
         data.append("page", document.title);
-        if (SHEETS_ENDPOINT.indexOf("https://script.google.com/") === 0) {
+        SHEETS_ENDPOINTS.forEach(function (url) {
+          if (url.indexOf("https://script.google.com/") !== 0) return;
           try {
-            fetch(SHEETS_ENDPOINT, { method: "POST", mode: "no-cors", keepalive: true, body: data })
+            fetch(url, { method: "POST", mode: "no-cors", keepalive: true, body: new URLSearchParams(data) })
               .catch(function () { /* silent */ });
           } catch (err) { /* silent */ }
-        }
+        });
         f.reset();
         if (note) {
           note.textContent = "Thank you! We have received your enquiry and will get back to you shortly.";
