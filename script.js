@@ -104,16 +104,18 @@
     }
   }
 
-  /* ---------- Contact form (no server: opens email app) ---------- */
+  /* ---------- Contact form: shows a thank-you message (nothing is sent or saved) ---------- */
   function initForms() {
     $$(".enquiry-form").forEach(function (f) {
+      var note = $(".form-note", f);
       f.addEventListener("submit", function (e) {
         e.preventDefault();
-        var d = new FormData(f);
-        var body = "Name: " + d.get("name") + "\nPhone: " + d.get("phone") + "\nEmail: " + d.get("email") + "\n\n" + (d.get("message") || "");
-        window.location.href = "mailto:" + EMAIL + "?subject=" + encodeURIComponent("Website enquiry from " + d.get("name")) + "&body=" + encodeURIComponent(body);
-        var note = $(".form-note", f);
-        if (note) note.style.display = "block";
+        f.reset();
+        if (note) {
+          note.textContent = "Thank you! We have received your enquiry and will get back to you shortly.";
+          note.style.color = "#2e7d32";
+          note.style.display = "block";
+        }
       });
     });
   }
