@@ -110,7 +110,7 @@
      Setup steps: sheet1-apps-script.txt and sheet2-apps-script.txt                       */
   var SHEETS_ENDPOINTS = [
     "https://script.google.com/macros/s/AKfycbyTzTBps491o__BSuLlpxA-MlL3hGL88ABGbhNh6-HTnPJIg_1ZWzrGKK0Ljazyy5xv/exec",
-    "https://script.google.com/macros/s/AKfycbyTzTBps491o__BSuLlpxA-MlL3hGL88ABGbhNh6-HTnPJIg_1ZWzrGKK0Ljazyy5xv/exec"
+    "https://script.google.com/macros/s/AKfycbztaxH06AlM5uSTU1DtlB95WKB8ulQdtbPy4V34Ohz90EDjOkUw2VfiiuvUSy5s03YfnA/exec"
   ];
 
   function initForms() {
