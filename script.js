@@ -109,8 +109,8 @@
      Paste each sheet's Google Apps Script web app URL (ends in /exec) between its quotes.
      Setup steps: sheet1-apps-script.txt and sheet2-apps-script.txt                       */
   var SHEETS_ENDPOINTS = [
-    "https://script.google.com/macros/s/AKfycbyTzTBps491o__BSuLlpxA-MlL3hGL88ABGbhNh6-HTnPJIg_1ZWzrGKK0Ljazyy5xv/exec",
-    "https://script.google.com/macros/s/AKfycbztaxH06AlM5uSTU1DtlB95WKB8ulQdtbPy4V34Ohz90EDjOkUw2VfiiuvUSy5s03YfnA/exec"
+    "https://script.google.com/macros/s/AKfycbxXaEcJs6Az17kf40epUgm0purvZtFpMzur4EFtI0-UkJMOfnXJUP5ka4iW4ThOyRO0/exec",
+    "SHEET2_URL_HERE"
   ];
 
   function initForms() {
@@ -132,12 +132,21 @@
               .catch(function () { /* silent */ });
           } catch (err) { /* silent */ }
         });
+        // WhatsApp message to Eternia, filled in with the enquiry
+        var waText = "Hello Eternia Properties, I have a property enquiry.\n" +
+          "Name: " + (d.get("name") || "") + "\n" +
+          "Phone: " + (d.get("phone") || "") + "\n" +
+          "Email: " + (d.get("email") || "") +
+          (d.get("message") ? "\nMessage: " + d.get("message") : "");
+        var waUrl = "https://wa.me/91" + PHONE + "?text=" + encodeURIComponent(waText);
+
         f.reset();
         if (note) {
-          note.textContent = "Thank you! We have received your enquiry and will get back to you shortly.";
+          note.textContent = "Thank you! Opening WhatsApp to send your enquiry...";
           note.style.color = "#2e7d32";
           note.style.display = "block";
         }
+        setTimeout(function () { window.location.href = waUrl; }, 1200);
       });
     });
   }
