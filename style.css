@@ -412,3 +412,32 @@ button, input, select, textarea { font: inherit; }
   .float-btns { right: 14px; bottom: 14px; }
   .float-btns a { width: 46px; height: 46px; }
 }
+
+/* =====================================================================
+   PHOTOS — replace a photo by changing its url(...) below.
+   ===================================================================== */
+.hero { background: linear-gradient(rgba(0,0,0,.15),rgba(0,0,0,.15)), url("https://images.unsplash.com/photo-1560179707-f14e90ef3623?auto=format&fit=crop&w=1800&q=70") center/cover no-repeat; }
+.about-hero { background: url("https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?auto=format&fit=crop&w=1800&q=70") center/cover no-repeat; }
+img[src="images/apartment-1.svg"], img[src="images/apartment-2.svg"], img[src="images/apartment-3.svg"], img[src="images/villa-1.svg"], img[src="images/villa-2.svg"], img[src="images/plot-1.svg"], img[src="images/plot-2.svg"], img[src="images/commercial-1.svg"], img[src="images/commercial-2.svg"], img[src="images/zone-west.svg"], img[src="images/zone-north.svg"], img[src="images/zone-south.svg"], img[src="images/zone-east.svg"], img[src="images/contact-illustration.svg"] { object-position: -99999px 0 !important; background-position: center; background-size: cover; background-repeat: no-repeat; }
+img[src="images/apartment-1.svg"] { background-image: url("https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=900&q=70"); }
+img[src="images/apartment-2.svg"] { background-image: url("https://images.unsplash.com/photo-1479839672679-a46483c0e7c8?auto=format&fit=crop&w=900&q=70"); }
+img[src="images/apartment-3.svg"] { background-image: url("https://images.unsplash.com/photo-1624204386084-dd8c05e32226?auto=format&fit=crop&w=900&q=70"); }
+img[src="images/villa-1.svg"] { background-image: url("https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=900&q=70"); }
+img[src="images/villa-2.svg"] { background-image: url("https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=900&q=70"); }
+img[src="images/plot-1.svg"] { background-image: url("https://images.unsplash.com/photo-1599809563132-4b678fb6f611?auto=format&fit=crop&w=900&q=70"); }
+img[src="images/plot-2.svg"] { background-image: url("https://images.unsplash.com/photo-1651769005074-2ef5c6f74276?auto=format&fit=crop&w=900&q=70"); }
+img[src="images/commercial-1.svg"] { background-image: url("https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=900&q=70"); }
+img[src="images/commercial-2.svg"] { background-image: url("https://images.unsplash.com/photo-1781919293919-693ee10fb06c?auto=format&fit=crop&w=900&q=70"); }
+img[src="images/zone-west.svg"] { background-image: url("https://images.unsplash.com/photo-1730315661998-dadff57d7f8c?auto=format&fit=crop&w=900&q=70"); }
+img[src="images/zone-north.svg"] { background-image: url("https://images.unsplash.com/photo-1775733924031-521cd86c69cc?auto=format&fit=crop&w=900&q=70"); }
+img[src="images/zone-south.svg"] { background-image: url("https://images.unsplash.com/photo-1696941515998-d83f24967aca?auto=format&fit=crop&w=900&q=70"); }
+img[src="images/zone-east.svg"] { background-image: url("https://images.unsplash.com/photo-1762172453959-38ab954a7aa4?auto=format&fit=crop&w=900&q=70"); }
+img[src="images/contact-illustration.svg"] { background-image: url("https://images.unsplash.com/photo-1760235674447-fe0cc115b697?auto=format&fit=crop&w=900&q=70"); }
+.about-intro img[src="images/zone-west.svg"] { background-image: url("https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=900&q=70"); }
+.zone-card img { height: 180px; border-radius: 8px 8px 0 0; object-fit: cover; }
+.zone-intro .art, .about-intro .img, .guide-card .media { padding: 0 !important; overflow: hidden; }
+.zone-intro .art { border-radius: var(--radius); }
+.zone-intro .art img, .about-intro .img img, .guide-card .media img { object-fit: cover; }
+.about-intro .img { border-radius: var(--radius); }
+.touch-illus img { width: 100%; max-width: 360px; height: 300px; object-fit: cover; border-radius: var(--radius); }
+@media (max-width: 767px) { .zone-card img { height: 120px; } }
